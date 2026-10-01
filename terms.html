@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Naudojimo sąlygos – Giedra</title>
+<meta name="description" content="Giedra programėlės naudojimo sąlygos. Giedra nėra medicinos priemonė ir nepakeičia specialisto pagalbos.">
+<meta name="robots" content="index, follow">
+<style>
+  :root {
+    --bg: #FDFCFA; --bg2: #F7F4F0; --bg3: #F0EBE5; --brand: #FEF3EE;
+    --text: #18181A; --text2: #5C5A56; --text3: #8C8A84;
+    --accent: #D85A30; --accent2: #F0997B; --soft: #F5C4B3;
+    --border: rgba(24,24,26,0.10);
+    --danger-bg: #FCECEA; --danger-text: #7C2018; --danger-border: #F09A8D;
+    --info-bg: #E9F1F9; --info-text: #1D4E79; --info-border: #9CC1E4;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161514; --bg2: #1F1D1B; --bg3: #2A2725; --brand: #2A1A12;
+      --text: #F0EDE8; --text2: #A8A49E; --text3: #8A867F;
+      --accent: #F0997B; --accent2: #D85A30; --soft: #7A2E10;
+      --border: rgba(240,237,232,0.12);
+      --danger-bg: #2C1715; --danger-text: #F09A8D; --danger-border: #5E2A24;
+      --info-bg: #16222E; --info-text: #9CC1E4; --info-border: #2C4A66;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+  header.top { display: flex; align-items: center; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
+  header.top a { color: inherit; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .brand-name { font-family: Georgia, "Times New Roman", serif; font-size: 22px; }
+  nav.links { margin-left: auto; display: flex; gap: 14px; font-size: 14px; flex-wrap: wrap; }
+  nav.links a { color: var(--text2); }
+  h1 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: 30px; line-height: 1.25; margin: 0 0 6px; }
+  h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: 21px; line-height: 1.3; margin: 36px 0 10px; padding-top: 8px; }
+  h3 { font-size: 16px; margin: 20px 0 6px; }
+  p, li { color: var(--text); }
+  .meta { color: var(--text3); font-size: 14px; margin: 0 0 20px; }
+  a { color: var(--accent); text-underline-offset: 2px; }
+  ul, ol { padding-left: 22px; }
+  li { margin: 4px 0; }
+  .lead { font-size: 17px; color: var(--text2); }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 16px 18px; margin: 16px 0; }
+  .note { background: var(--info-bg); color: var(--info-text); border: 1px solid var(--info-border); border-radius: 12px; padding: 12px 16px; margin: 16px 0; font-size: 15px; }
+  .crisis { background: var(--danger-bg); border: 1px solid var(--danger-border); border-radius: 16px; padding: 16px 18px; margin: 20px 0; }
+  .crisis h2, .crisis strong.title { color: var(--danger-text); margin-top: 0; padding-top: 0; }
+  .crisis p, .crisis li { color: var(--text); }
+  .crisis ul { list-style: none; padding: 0; margin: 10px 0 0; }
+  .crisis li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid var(--danger-border); flex-wrap: wrap; }
+  .crisis li:first-child { border-top: 0; }
+  .crisis a.num { font-weight: 600; font-size: 18px; color: var(--danger-text); text-decoration: none; white-space: nowrap; }
+  .placeholder { background: #FFE58A; color: #3A2E00; padding: 0 4px; border-radius: 4px; font-weight: 600; }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 520px; }
+  th, td { text-align: left; vertical-align: top; padding: 9px 10px; border-bottom: 1px solid var(--border); }
+  th { background: var(--bg3); font-weight: 600; }
+  .toc { columns: 2; column-gap: 24px; font-size: 15px; }
+  @media (max-width: 560px) { .toc { columns: 1; } h1 { font-size: 26px; } }
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--text3); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a href="index.html" aria-label="Giedra – pradžia"><svg viewBox="0 0 58 58" aria-hidden="true" width="34" height="34"><circle cx="29" cy="29" r="28" fill="var(--brand)"/><path d="M12 42 Q22 22 29 30 Q36 38 46 18" stroke="#D85A30" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M16 42 Q24 26 29 32 Q34 38 42 22" stroke="#F0997B" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.7"/></svg><span class="brand-name">Giedra</span></a>
+  <nav class="links" aria-label="Dokumentai"><a href="privacy.html">Privatumas</a><a href="terms.html">Sąlygos</a></nav>
+</header>
+
+<main>
+<h1>Naudojimo sąlygos</h1>
+<p class="meta">Programėlė „Giedra“ (Android paketas <code>lt.giedra.app</code>) · Įsigalioja nuo 2026 m. spalio 1 d. · Versija 1.0</p>
+
+<section class="crisis" aria-labelledby="krize">
+  <h2 id="krize">Jei jums gresia pavojus – nelaukite</h2>
+  <p><strong>Giedra nėra skirta krizinėms situacijoms.</strong> Jei galvojate apie savižudybę, galite susižaloti ar kitam žmogui gresia pavojus, skambinkite dabar:</p>
+  <ul>
+    <li><span>Bendrasis pagalbos centras (skubi pagalba)</span><a class="num" href="tel:112">112</a></li>
+    <li><span>Vilties linija (suaugusiems, visą parą, nemokamai)</span><a class="num" href="tel:116123">116 123</a></li>
+    <li><span>Jaunimo linija (visą parą, nemokamai)</span><a class="num" href="tel:880028888">8 800 28 888</a></li>
+    <li><span>Vaikų linija (vaikams ir paaugliams, nemokamai)</span><a class="num" href="tel:116111">116 111</a></li>
+  </ul>
+</section>
+
+<p class="lead">Šios sąlygos yra sutartis tarp jūsų ir programėlės „Giedra“ kūrėjo. Kurdami paskyrą ar naudodamiesi programėle, patvirtinate, kad perskaitėte ir sutinkate su šiomis sąlygomis bei <a href="privacy.html">Privatumo politika</a>. Jei nesutinkate – programėlės nenaudokite.</p>
+
+<h2 id="kas">1. Kas teikia paslaugą</h2>
+<p>Programėlę „Giedra“ kuria ir teikia fizinis asmuo <strong><span class="placeholder">[VARDAS PAVARDĖ]</span></strong>, Lietuvos Respublika (toliau – „mes“). Kontaktai: <span class="placeholder">[EL. PAŠTAS]</span>.</p>
+
+<h2 id="paslauga">2. Kas yra Giedra</h2>
+<p>Giedra – tai emocinės savijautos pagalbinė programėlė, kurioje galite:</p>
+<ul>
+  <li>kalbėtis su dirbtinio intelekto (DI) asistentu, kurio atsakymai remiasi įrodymais pagrįstų psichologijos metodų (pvz., kognityvinės elgesio terapijos, sąmoningumo praktikų) bendrąja informacija;</li>
+  <li>vesti asmeninį dienoraštį, kurio tekstas šifruojamas jūsų įrenginyje;</li>
+  <li>žymėti savo nuotaiką ir stebėti jos pokyčius;</li>
+  <li>gauti vietinius priminimus.</li>
+</ul>
+
+<h2 id="ne-medicina">3. Giedra nėra medicinos priemonė ir nėra terapija</h2>
+<div class="card">
+<ul>
+  <li>Giedra <strong>nėra medicinos priemonė</strong> ir nėra skirta jokiai ligai ar sutrikimui diagnozuoti, gydyti, stebėti ar jų prevencijai.</li>
+  <li>Giedra <strong>nėra psichoterapija, psichologinė konsultacija ar medicininė paslauga</strong> ir jų nepakeičia. DI asistentas nėra psichologas, psichoterapeutas ar gydytojas, neturi licencijos ir nesudaro su jumis terapinio santykio.</li>
+  <li>Programėlės informacija yra bendrojo pobūdžio ir skirta savijautai bei savirefleksijai. Ji nėra individuali profesionali rekomendacija.</li>
+  <li>Jei jaučiate ilgalaikį nerimą, prislėgtą nuotaiką ar kitus sunkumus, kreipkitės į šeimos gydytoją, psichologą, psichiatrą ar savo savivaldybės psichikos sveikatos centrą. Nenutraukite ir nekeiskite gydymo vien remdamiesi programėlės atsakymais.</li>
+</ul>
+</div>
+
+<h2 id="krizes">4. Ne krizinėms situacijoms</h2>
+<p>Programėlė automatiškai atpažįsta kai kuriuos su savižudybe ar savęs žalojimu susijusius žodžius ir tokiu atveju parodo pagalbos linijų numerius. Tačiau šis atpažinimas veikia pagal ribotą žodžių sąrašą, <strong>gali nesuveikti</strong> ir <strong>niekam apie jus nepraneša</strong> – nei pagalbos tarnyboms, nei artimiesiems, nei mums. Niekas programėlėje jūsų žinučių realiu laiku nestebi. Ištikus krizei skambinkite <a href="tel:112">112</a> arba į vieną iš <a href="#krize">aukščiau nurodytų linijų</a>.</p>
+
+<h2 id="di">5. DI gali klysti</h2>
+<ul>
+  <li>DI atsakymai generuojami automatiškai (naudojant Anthropic Claude modelį) ir gali būti <strong>netikslūs, neišsamūs, netinkami jūsų situacijai ar klaidingi</strong>, net jei skamba įtikinamai.</li>
+  <li>Atsakymus vertinkite kritiškai ir nesiremkite jais priimdami svarbius sprendimus dėl sveikatos, teisinių, finansinių ar kitų reikšmingų klausimų.</li>
+  <li>DI neprisimena ankstesnių pokalbių po to, kai pradedate naują pokalbį ar uždarote programėlę, ir neturi prieigos prie jūsų dienoraščio teksto.</li>
+  <li>Kaip tvarkomos pokalbio žinutės, aprašyta <a href="privacy.html#di">Privatumo politikoje</a>.</li>
+</ul>
+
+<h2 id="amzius">6. Amžiaus riba</h2>
+<!-- TODO (savininkui): pasirinkta konservatyvi 18 m. riba (žr. Privatumo politikos 12 skyriaus pastabą). Suderinkite su registracijos ekranu ir Google Play nustatymais. -->
+<p>Programėlė skirta tik <strong>18 metų ir vyresniems</strong> asmenims. Kurdami paskyrą patvirtinate, kad jums yra bent 18 metų.</p>
+
+<h2 id="paskyra">7. Paskyra</h2>
+<ul>
+  <li>Paskyrai sukurti reikia el. pašto adreso ir slaptažodžio. Pateikite teisingą el. pašto adresą ir naudokite saugų, kitur nenaudojamą slaptažodį.</li>
+  <li>Esate atsakingi už savo prisijungimo duomenų slaptumą ir už veiksmus, atliktus jūsų paskyroje. Jei įtariate, kad kas nors pasiekė jūsų paskyrą, nedelsdami pakeiskite slaptažodį ir praneškite mums.</li>
+  <li><strong>Svarbu:</strong> dienoraščio įrašai šifruojami raktu, apsaugotu jūsų slaptažodžiu. <strong>Pamiršus slaptažodį, ankstesnių dienoraščio įrašų atkurti neįmanoma</strong> – nei jums, nei mums.</li>
+  <li>Paskyrą ir visus su ja susijusius duomenis galite bet kada ištrinti programėlėje (<strong>Nustatymai → Ištrinti paskyrą</strong>). Ištrynimas yra negrįžtamas.</li>
+  <li>Viena paskyra skirta vienam asmeniui; paskyros negalima perleisti kitiems.</li>
+</ul>
+
+<h2 id="naudojimas">8. Leistinas naudojimas</h2>
+<p>Naudodamiesi programėle, įsipareigojate:</p>
+<ul>
+  <li>naudoti ją tik asmeniniais, nekomerciniais tikslais ir laikytis teisės aktų;</li>
+  <li>nebandyti pažeisti programėlės, serverių ar kitų naudotojų duomenų saugumo, apeiti apsaugos priemonių, perkrauti sistemos ar automatizuotai siųsti didelio kiekio užklausų;</li>
+  <li>nenaudoti programėlės ar jos DI asistento neteisėtam, žalingam, kitus asmenis įžeidžiančiam ar diskriminuojančiam turiniui kurti, kitiems asmenims persekioti ar jiems kenkti;</li>
+  <li>nebandyti priversti DI generuoti turinio, kuris pažeidžia teisės aktus ar DI paslaugų teikėjo naudojimo politiką;</li>
+  <li>neatkurti programėlės išeitinio kodo, nekopijuoti ir neplatinti jos, išskyrus kiek tai leidžia taikoma licencija ar teisės aktai;</li>
+  <li>be būtinybės nerašyti pokalbyje kitų asmenų asmens duomenų.</li>
+</ul>
+<p>Pažeidus šias sąlygas, galime apriboti prieigą prie programėlės ar ištrinti paskyrą. Jei įmanoma ir leistina, apie tai jus informuosime iš anksto.</p>
+
+<h2 id="kaina">9. Kaina ir paslaugos pakeitimai</h2>
+<p>Šiuo metu programėlė yra nemokama. Galime keisti, papildyti ar nutraukti programėlės funkcijas arba visą paslaugą. Prieš nutraukdami paslaugą, apie tai pranešime iš anksto ir, kai įmanoma, suteiksime galimybę gauti savo duomenis. Jei ateityje atsirastų mokamų funkcijų, jos bus aiškiai pažymėtos ir už jas nebus imama mokesčio be jūsų aiškaus sutikimo.</p>
+
+<h2 id="turinys">10. Turinys ir intelektinė nuosavybė</h2>
+<ul>
+  <li>Tai, ką rašote programėlėje (dienoraštį, žinutes), priklauso jums. Suteikiate mums tik tiek teisių, kiek būtina jūsų turiniui saugoti, perduoti ir apdoroti, kad programėlė veiktų, kaip aprašyta Privatumo politikoje.</li>
+  <li>Programėlės dizainas, pavadinimas, logotipas ir kitas mūsų sukurtas turinys yra saugomi intelektinės nuosavybės teisių.</li>
+</ul>
+
+<h2 id="atsakomybe">11. Atsakomybės ribojimas</h2>
+<ul>
+  <li>Programėlė teikiama tokia, kokia yra (angl. <em>„as is“</em>). Stengiamės, kad ji veiktų patikimai, tačiau negarantuojame, kad ji veiks be pertrūkių ar klaidų, kad DI atsakymai bus tikslūs ar tinkami jūsų situacijai, ar kad duomenys niekada nebus prarasti.</li>
+  <li>Kiek leidžia teisės aktai, neatsakome už netiesioginius nuostolius ir už žalą, atsiradusią dėl to, kad rėmėtės DI atsakymais vietoj profesionalios pagalbos, dėl trečiųjų šalių paslaugų (pvz., interneto ryšio, paslaugų teikėjų) sutrikimų ar dėl prarasto slaptažodžio.</li>
+  <li>Šis ribojimas <strong>netaikomas</strong> žalai, padarytai tyčia ar dėl didelio neatsargumo, žalai gyvybei ar sveikatai, kai jos negalima riboti pagal įstatymus, ir neriboja jūsų kaip vartotojo teisių, kurių pagal Lietuvos Respublikos ir ES teisę negalima atsisakyti.</li>
+</ul>
+
+<h2 id="nutraukimas">12. Sutarties nutraukimas</h2>
+<p>Galite bet kada nustoti naudotis programėle ir ištrinti paskyrą. Mes galime nutraukti sutartį dėl šių sąlygų pažeidimo (žr. 8 skyrių) arba nutraukę paslaugos teikimą (žr. 9 skyrių). Nutraukus sutartį, jūsų duomenys ištrinami, kaip aprašyta Privatumo politikoje.</p>
+
+<h2 id="teise">13. Taikoma teisė ir ginčai</h2>
+<p>Šioms sąlygoms taikoma <strong>Lietuvos Respublikos teisė</strong>. Tai neatima iš jūsų apsaugos, kurią jums kaip vartotojui suteikia jūsų nuolatinės gyvenamosios vietos valstybės imperatyviosios teisės normos.</p>
+<p>Kilus ginčui, pirmiausia kreipkitės į mus el. paštu – pasistengsime jį išspręsti taikiai. Jei nepavyktų, kaip vartotojas galite kreiptis į <a href="https://vvtat.lrv.lt" rel="noopener">Valstybinę vartotojų teisių apsaugos tarnybą</a> (Vilniaus g. 25, LT-01402 Vilnius) dėl neteisminio ginčo sprendimo arba į kompetentingą Lietuvos Respublikos teismą. Ginčus dėl asmens duomenų galite spręsti ir <a href="https://vdai.lrv.lt" rel="noopener">Valstybinėje duomenų apsaugos inspekcijoje</a>.</p>
+
+<h2 id="pakeitimai">14. Sąlygų pakeitimai</h2>
+<p>Šias sąlygas galime keisti, pvz., pasikeitus programėlės funkcijoms ar teisės aktams. Aktuali versija visada skelbiama šiame puslapyje. Apie esminius pakeitimus pranešime programėlėje ar el. paštu bent prieš 14 dienų iki jų įsigaliojimo. Jei nesutinkate su pakeitimais, galite iki jų įsigaliojimo ištrinti paskyrą; toliau naudodamiesi programėle po pakeitimų įsigaliojimo, sutinkate su atnaujintomis sąlygomis.</p>
+
+<h2 id="kontaktai">15. Kontaktai</h2>
+<div class="card">
+  <strong><span class="placeholder">[VARDAS PAVARDĖ]</span></strong><br>
+  El. paštas: <span class="placeholder">[EL. PAŠTAS]</span>
+</div>
+</main>
+
+<footer>
+  <p>© 2026 Giedra · <a href="privacy.html">Privatumo politika</a> · <a href="terms.html">Naudojimo sąlygos</a></p>
+  <p>Skubi pagalba: <a href="tel:112">112</a> · Vilties linija <a href="tel:116123">116 123</a> · Jaunimo linija <a href="tel:880028888">8 800 28 888</a></p>
+</footer>
+</div>
+</body>
+</html>

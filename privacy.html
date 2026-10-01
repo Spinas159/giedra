@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privatumo politika – Giedra</title>
+<meta name="description" content="Giedra programėlės privatumo politika: kokius duomenis tvarkome, kodėl, kam juos perduodame ir kokias teises turite.">
+<meta name="robots" content="index, follow">
+<style>
+  :root {
+    --bg: #FDFCFA; --bg2: #F7F4F0; --bg3: #F0EBE5; --brand: #FEF3EE;
+    --text: #18181A; --text2: #5C5A56; --text3: #8C8A84;
+    --accent: #D85A30; --accent2: #F0997B; --soft: #F5C4B3;
+    --border: rgba(24,24,26,0.10);
+    --danger-bg: #FCECEA; --danger-text: #7C2018; --danger-border: #F09A8D;
+    --info-bg: #E9F1F9; --info-text: #1D4E79; --info-border: #9CC1E4;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #161514; --bg2: #1F1D1B; --bg3: #2A2725; --brand: #2A1A12;
+      --text: #F0EDE8; --text2: #A8A49E; --text3: #8A867F;
+      --accent: #F0997B; --accent2: #D85A30; --soft: #7A2E10;
+      --border: rgba(240,237,232,0.12);
+      --danger-bg: #2C1715; --danger-text: #F09A8D; --danger-border: #5E2A24;
+      --info-bg: #16222E; --info-text: #9CC1E4; --info-border: #2C4A66;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 24px 16px 64px; }
+  header.top { display: flex; align-items: center; gap: 12px; padding-bottom: 16px; border-bottom: 1px solid var(--border); margin-bottom: 24px; }
+  header.top a { color: inherit; text-decoration: none; display: flex; align-items: center; gap: 10px; }
+  .brand-name { font-family: Georgia, "Times New Roman", serif; font-size: 22px; }
+  nav.links { margin-left: auto; display: flex; gap: 14px; font-size: 14px; flex-wrap: wrap; }
+  nav.links a { color: var(--text2); }
+  h1 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: 30px; line-height: 1.25; margin: 0 0 6px; }
+  h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; font-size: 21px; line-height: 1.3; margin: 36px 0 10px; padding-top: 8px; }
+  h3 { font-size: 16px; margin: 20px 0 6px; }
+  p, li { color: var(--text); }
+  .meta { color: var(--text3); font-size: 14px; margin: 0 0 20px; }
+  a { color: var(--accent); text-underline-offset: 2px; }
+  ul, ol { padding-left: 22px; }
+  li { margin: 4px 0; }
+  .lead { font-size: 17px; color: var(--text2); }
+  .card { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; padding: 16px 18px; margin: 16px 0; }
+  .note { background: var(--info-bg); color: var(--info-text); border: 1px solid var(--info-border); border-radius: 12px; padding: 12px 16px; margin: 16px 0; font-size: 15px; }
+  .crisis { background: var(--danger-bg); border: 1px solid var(--danger-border); border-radius: 16px; padding: 16px 18px; margin: 20px 0; }
+  .crisis h2, .crisis strong.title { color: var(--danger-text); margin-top: 0; padding-top: 0; }
+  .crisis p, .crisis li { color: var(--text); }
+  .crisis ul { list-style: none; padding: 0; margin: 10px 0 0; }
+  .crisis li { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; border-top: 1px solid var(--danger-border); flex-wrap: wrap; }
+  .crisis li:first-child { border-top: 0; }
+  .crisis a.num { font-weight: 600; font-size: 18px; color: var(--danger-text); text-decoration: none; white-space: nowrap; }
+  .placeholder { background: #FFE58A; color: #3A2E00; padding: 0 4px; border-radius: 4px; font-weight: 600; }
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 12px 0; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; min-width: 520px; }
+  th, td { text-align: left; vertical-align: top; padding: 9px 10px; border-bottom: 1px solid var(--border); }
+  th { background: var(--bg3); font-weight: 600; }
+  .toc { columns: 2; column-gap: 24px; font-size: 15px; }
+  @media (max-width: 560px) { .toc { columns: 1; } h1 { font-size: 26px; } }
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--border); color: var(--text3); font-size: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+  <a href="index.html" aria-label="Giedra – pradžia"><svg viewBox="0 0 58 58" aria-hidden="true" width="34" height="34"><circle cx="29" cy="29" r="28" fill="var(--brand)"/><path d="M12 42 Q22 22 29 30 Q36 38 46 18" stroke="#D85A30" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M16 42 Q24 26 29 32 Q34 38 42 22" stroke="#F0997B" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.7"/></svg><span class="brand-name">Giedra</span></a>
+  <nav class="links" aria-label="Dokumentai"><a href="privacy.html">Privatumas</a><a href="terms.html">Sąlygos</a></nav>
+</header>
+
+<main>
+<h1>Privatumo politika</h1>
+<p class="meta">Programėlė „Giedra“ (Android paketas <code>lt.giedra.app</code>) · Įsigalioja nuo 2026 m. spalio 1 d. · Versija 1.0</p>
+
+<p class="lead">Giedra – tai dirbtiniu intelektu (DI) paremta emocinės savijautos pagalbinė programėlė: pokalbis su DI, nuotaikų sekimas ir asmeninis dienoraštis. Kadangi tai, ką čia rašote, yra labai asmeniška, šioje politikoje paprastai ir tiksliai paaiškiname, kokius duomenis tvarkome, kur jie keliauja ir kaip galite juos valdyti.</p>
+
+<div class="card">
+<strong>Trumpai</strong>
+<ul>
+  <li>Dienoraščio įrašų tekstas užšifruojamas <strong>jūsų telefone</strong> (AES-256-GCM) prieš išsiunčiant į serverį. Be jūsų slaptažodžio jo perskaityti negalime nei mes, nei mūsų paslaugų teikėjai.</li>
+  <li>Pokalbio žinutės <strong>nėra</strong> šifruojamos „nuo galo iki galo“: kad DI galėtų atsakyti, jos perduodamos (saugiu HTTPS ryšiu) mūsų serveriui ir DI paslaugų teikėjams Anthropic ir Voyage AI.</li>
+  <li>Nuotaikų įvertinimai (1–5), dienoraščio įrašo data, nuotaika ir žymos saugomi neužšifruoti, bet apsaugoti prieigos taisyklėmis – juos matote tik jūs.</li>
+  <li>Nerodome reklamos, neparduodame ir nenuomojame jūsų duomenų, nenaudojame analitikos ar sekimo įrankių.</li>
+  <li>Paskyrą ir visus su ja susijusius duomenis galite bet kada ištrinti programėlės nustatymuose.</li>
+</ul>
+</div>
+
+<nav aria-label="Turinys">
+<ol class="toc">
+  <li><a href="#valdytojas">Duomenų valdytojas</a></li>
+  <li><a href="#duomenys">Kokius duomenis tvarkome</a></li>
+  <li><a href="#tikslai">Tikslai ir teisiniai pagrindai</a></li>
+  <li><a href="#sutikimas">Sutikimas dėl sveikatos duomenų</a></li>
+  <li><a href="#di">Kaip veikia pokalbis su DI</a></li>
+  <li><a href="#tvarkytojai">Duomenų tvarkytojai</a></li>
+  <li><a href="#perdavimas">Perdavimas už ES ribų</a></li>
+  <li><a href="#saugumas">Saugumas ir šifravimas</a></li>
+  <li><a href="#saugojimas">Saugojimo terminai</a></li>
+  <li><a href="#teises">Jūsų teisės</a></li>
+  <li><a href="#skundas">Skundo teisė</a></li>
+  <li><a href="#amzius">Amžiaus riba</a></li>
+  <li><a href="#reklama">Reklama ir pardavimas</a></li>
+  <li><a href="#automatizuoti">Automatizuoti sprendimai</a></li>
+  <li><a href="#pakeitimai">Politikos pakeitimai</a></li>
+  <li><a href="#kontaktai">Kontaktai</a></li>
+</ol>
+</nav>
+
+<h2 id="valdytojas">1. Duomenų valdytojas</h2>
+<p>Jūsų asmens duomenų valdytojas yra fizinis asmuo, programėlės kūrėjas:</p>
+<div class="card">
+  <!-- TODO (savininkui): įrašykite savo vardą, pavardę ir kontaktinį el. paštą. Jei nenorite viešinti gyvenamosios vietos adreso, BDAR 13 str. pakanka kontaktinių duomenų; vis dėlto rekomenduojama nurodyti bent šalį / miestą. -->
+  <strong><span class="placeholder">[VARDAS PAVARDĖ]</span></strong><br>
+  Lietuvos Respublika<br>
+  El. paštas: <span class="placeholder">[EL. PAŠTAS]</span>
+</div>
+<p>Duomenų apsaugos pareigūno nesame paskyrę, nes to nereikalauja teisės aktai. Visais su privatumu susijusiais klausimais rašykite aukščiau nurodytu el. paštu.</p>
+
+<h2 id="duomenys">2. Kokius duomenis tvarkome</h2>
+
+<h3>2.1. Paskyros duomenys</h3>
+<ul>
+  <li><strong>El. pašto adresas</strong> ir <strong>slaptažodis</strong>. Slaptažodį saugo autentifikavimo paslauga (Supabase Auth) tik maišos (angl. <em>hash</em>) pavidalu – mes jo nematome.</li>
+  <li>Techniniai paskyros duomenys: naudotojo identifikatorius (UUID), paskyros sukūrimo ir paskutinio prisijungimo laikas, prisijungimo sesijos žetonai.</li>
+</ul>
+
+<h3>2.2. Šifravimo rakto duomenys</h3>
+<ul>
+  <li>Jūsų dienoraščio šifravimo raktas, <strong>užšifruotas</strong> raktu, gautu iš jūsų slaptažodžio (PBKDF2, 100 000 iteracijų, SHA-256), kartu su „druska“ ir inicializavimo vektoriumi. Neužšifruoto rakto serveryje nesaugome – jis laikomas tik jūsų įrenginio saugioje saugykloje (Android Keystore per <code>expo-secure-store</code>).</li>
+</ul>
+
+<h3>2.3. Dienoraščio įrašai</h3>
+<ul>
+  <li><strong>Įrašo tekstas</strong> – užšifruotas jūsų įrenginyje AES-256-GCM algoritmu; serveryje saugomas tik šifruotas tekstas.</li>
+  <li><strong>Neužšifruoti metaduomenys:</strong> įrašo data, pasirinkta nuotaika (1–5), žymos (jei jas pridedate), sukūrimo laikas.</li>
+</ul>
+
+<h3>2.4. Nuotaikų įrašai</h3>
+<ul>
+  <li>Nuotaikos įvertinimas (skaičius nuo 1 iki 5) ir jo laikas. Saugoma <strong>neužšifruota</strong> (kad būtų galima rodyti nuotaikų grafiką), bet prieinama tik jums.</li>
+</ul>
+
+<h3>2.5. Pokalbiai su DI</h3>
+<ul>
+  <li>Jūsų žinutė, to paties pokalbio ankstesnės žinutės (pokalbio kontekstas), šalies kodas (pagal nutylėjimą „LT“, naudojamas parinkti tinkamas pagalbos linijas) ir pokalbio sesijos numeris.</li>
+  <li>Šiuo metu pokalbių istorijos <strong>nesaugome</strong> savo duomenų bazėje: ji laikoma tik programėlės atmintyje ir dingsta uždarius programėlę arba pradėjus naują pokalbį. Tačiau kiekviena žinutė perduodama mūsų serveriui ir DI paslaugų teikėjams, kaip aprašyta <a href="#di">5 skyriuje</a>.</li>
+  <!-- TODO (savininkui): jei bus įjungtas pokalbių saugojimas Supabase lentelėse chat_sessions / chat_messages arba nuotaikų konteksto (mood_context) siuntimas į pokalbį, atnaujinkite šį skyrių ir saugojimo terminus. -->
+</ul>
+
+<h3>2.6. Duomenys, saugomi tik jūsų įrenginyje</h3>
+<ul>
+  <li>Prisijungimo sesija, pasirinkta išvaizdos tema (šviesi / tamsi / automatinė), priminimų nustatymai.</li>
+  <li><strong>Priminimai</strong> yra vietiniai pranešimai: jie suplanuojami jūsų telefone, nesiunčiami per mūsų serverius ir nenaudoja „push“ paslaugų.</li>
+  <li><strong>Biometrinis užraktas</strong> (jei naudojamas) veikia tik per jūsų telefono operacinę sistemą. Jūsų piršto atspaudo ar veido duomenų mes negauname ir nesaugome – programėlė gauna tik atsakymą „patvirtinta / nepatvirtinta“.</li>
+</ul>
+
+<h3>2.7. Techniniai duomenys</h3>
+<ul>
+  <li>Kai programėlė jungiasi prie mūsų serverio ir Supabase, paslaugų teikėjai techniniuose žurnaluose (angl. <em>logs</em>) gali automatiškai užfiksuoti IP adresą, užklausos laiką ir panašią informaciją, reikalingą paslaugai veikti ir apsaugoti. Mūsų serveris į savo žurnalus pokalbių turinio sąmoningai nerašo.</li>
+  <li>Programėlėje <strong>nėra</strong> analitikos, reklamos ar trečiųjų šalių sekimo įrankių. Nerenkame jūsų buvimo vietos, kontaktų, nuotraukų ar mikrofono duomenų.</li>
+</ul>
+
+<h2 id="tikslai">3. Tikslai ir teisiniai pagrindai</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Tikslas</th><th>Duomenys</th><th>Teisinis pagrindas (BDAR)</th></tr></thead>
+  <tbody>
+    <tr><td>Paskyros sukūrimas, prisijungimas, paslaugos teikimas</td><td>El. paštas, slaptažodžio maiša, techniniai paskyros duomenys</td><td>6 str. 1 d. b p. – sutarties (Naudojimo sąlygų) vykdymas</td></tr>
+    <tr><td>Dienoraščio ir nuotaikų saugojimas, sinchronizavimas tarp įrenginių, nuotaikų grafikas</td><td>Šifruoti dienoraščio įrašai, nuotaikos, žymos, šifravimo rakto duomenys</td><td>6 str. 1 d. a p. ir <strong>9 str. 2 d. a p. – aiškus sutikimas</strong> (gali būti susiję su sveikata)</td></tr>
+    <tr><td>DI pokalbio atsakymų generavimas ir aktualių psichologinių šaltinių paieška</td><td>Pokalbio žinutės, šalies kodas, sesijos numeris</td><td>6 str. 1 d. a p. ir <strong>9 str. 2 d. a p. – aiškus sutikimas</strong></td></tr>
+    <tr><td>Krizinių žodžių atpažinimas ir pagalbos linijų rodymas</td><td>Pokalbio žinutė (tikrinama automatiškai, įrenginyje ir serveryje)</td><td>9 str. 2 d. a p. – aiškus sutikimas; kraštutiniu atveju – 6 str. 1 d. d p. (gyvybiniai interesai)</td></tr>
+    <tr><td>Paslaugos saugumas, piktnaudžiavimo prevencija, klaidų taisymas</td><td>Techniniai duomenys (IP adresas, užklausų laikas)</td><td>6 str. 1 d. f p. – teisėtas interesas užtikrinti saugią ir veikiančią paslaugą</td></tr>
+    <tr><td>Atsakymas į jūsų užklausas, teisių įgyvendinimas</td><td>El. paštas, užklausos turinys</td><td>6 str. 1 d. c p. – teisinė prievolė; 6 str. 1 d. f p.</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Duomenų nenaudojame jokiems kitiems tikslams, nekuriame jūsų profilio rinkodarai ir nesiunčiame rinkodaros laiškų.</p>
+
+<h2 id="sutikimas">4. Aiškus sutikimas dėl sveikatos duomenų</h2>
+<p>Tai, ką rašote dienoraštyje ar pokalbyje, ir jūsų nuotaikų įvertinimai gali atskleisti informaciją apie jūsų psichikos sveikatą – tai <strong>specialių kategorijų asmens duomenys</strong> (BDAR 9 str.). Juos tvarkome tik gavę jūsų <strong>aiškų sutikimą</strong>, kurį duodate kurdami paskyrą.</p>
+<!-- TODO (savininkui): registracijos ekrane (app/(auth)/register.tsx) šiuo metu NĖRA atskiro sutikimo žymimojo langelio. Prieš publikuojant būtina pridėti aiškų, iš anksto nepažymėtą sutikimą, pvz.: „Sutinku, kad Giedra tvarkytų mano dienoraščio, nuotaikų ir pokalbių duomenis, kurie gali būti susiję su sveikata, kaip aprašyta Privatumo politikoje“, ir nuorodas į šią politiką bei Naudojimo sąlygas. -->
+<p>Sutikimą galite bet kada atšaukti – ištrindami paskyrą programėlėje arba parašę mums el. paštu. Sutikimo atšaukimas nedaro poveikio iki tol vykdyto tvarkymo teisėtumui. Be šio sutikimo programėlės pagrindinės funkcijos (pokalbis, dienoraštis, nuotaikos) negali veikti.</p>
+
+<h2 id="di">5. Kaip veikia pokalbis su DI</h2>
+<ol>
+  <li>Jūsų įrenginys patikrina žinutę dėl krizinių žodžių (pvz., susijusių su savižudybe ar savęs žalojimu) ir, jei reikia, parodo pagalbos linijų numerius.</li>
+  <li>Žinutė kartu su to paties pokalbio istorija HTTPS ryšiu siunčiama į mūsų serverį (talpinamas „Railway“ platformoje).</li>
+  <li>Serveris dar kartą patikrina krizinius žodžius ir perduoda žinutės tekstą <strong>Voyage AI</strong>, kuri jį paverčia skaitine išraiška (vektoriumi). Pagal ją mūsų serveryje esančioje duomenų bazėje surandami aktualūs fragmentai iš viešų psichologijos šaltinių (pvz., WHO, NIMH, CBT/DBT metodikų). Pačios jūsų žinutės į šią duomenų bazę neįrašome.</li>
+  <li>Žinutė, pokalbio istorija ir rasti fragmentai siunčiami <strong>Anthropic</strong> (Claude DI modeliui), kuris sugeneruoja atsakymą.</li>
+  <li>Atsakymas grąžinamas į jūsų programėlę.</li>
+</ol>
+<div class="note">Patarimas: nerašykite pokalbyje informacijos, kuri jus tiesiogiai identifikuoja (pilno vardo, adreso, asmens kodo, telefono numerio) ar kitų žmonių asmens duomenų – atsakymui to nereikia.</div>
+<p>Dienoraščio įrašų teksto DI paslaugų teikėjams <strong>nesiunčiame</strong>.</p>
+
+<h2 id="tvarkytojai">6. Duomenų tvarkytojai (paslaugų teikėjai)</h2>
+<p>Paslaugai teikti naudojamės šiais tvarkytojais. Su kiekvienu iš jų taikomos duomenų tvarkymo sąlygos (angl. <em>Data Processing Agreement</em>), įpareigojančios duomenis tvarkyti tik pagal mūsų nurodymus ir juos apsaugoti.</p>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Teikėjas</th><th>Paskirtis</th><th>Kokie duomenys</th><th>Vieta</th></tr></thead>
+  <tbody>
+    <tr>
+      <td><strong>Supabase, Inc.</strong> (JAV)</td>
+      <td>Duomenų bazė ir autentifikavimas</td>
+      <td>Paskyros duomenys, užšifruotas raktas, šifruoti dienoraščio įrašai su metaduomenimis, nuotaikos</td>
+      <!-- TODO (savininkui): patvirtinkite Supabase projekto regioną (Dashboard → Project Settings → General → Region). PROD_CHECKLIST.md nurodo ES regioną, bet iš kodo to nustatyti negalima. Jei ne ES – pakeiskite. -->
+      <td>Europos Sąjunga (duomenų centras ES regione)</td>
+    </tr>
+    <tr>
+      <td><strong>Railway Corp.</strong> (JAV)</td>
+      <td>Mūsų serverio (API) talpinimas</td>
+      <td>Pokalbio žinutės perdavimo metu (neišsaugomos), techniniai žurnalai</td>
+      <!-- TODO (savininkui): patikrinkite Railway paslaugos regioną (Service → Settings → Region). Jei pasirinktas „EU West (Amsterdam)“, įrašykite „ES (Nyderlandai)“; kitu atveju – JAV. -->
+      <td>JAV arba ES, priklausomai nuo pasirinkto regiono <span class="placeholder">[PATIKSLINTI]</span></td>
+    </tr>
+    <tr>
+      <td><strong>Anthropic, PBC</strong> (JAV)</td>
+      <td>DI atsakymų generavimas (Claude)</td>
+      <td>Pokalbio žinutės ir istorija, šalies kodas, sesijos numeris</td>
+      <td>JAV</td>
+    </tr>
+    <tr>
+      <td><strong>Voyage AI</strong> (JAV; MongoDB, Inc. įmonių grupė)</td>
+      <td>Žinutės teksto pavertimas vektoriumi šaltinių paieškai</td>
+      <td>Paskutinės pokalbio žinutės tekstas</td>
+      <td>JAV</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+<p>Anthropic pagal savo komercines sąlygas API būdu gautų duomenų nenaudoja savo modeliams mokyti ir juos saugo tik ribotą laiką (paprastai iki 30 dienų), išskyrus atvejus, kai to reikia jų naudojimo politikos pažeidimams tirti ar įstatymų reikalavimams vykdyti.</p>
+<!-- TODO (savininkui): Voyage AI pagal nutylėjimą gali naudoti API duomenis paslaugai tobulinti. Voyage AI paskyros nustatymuose (dash.voyageai.com) įjunkite duomenų nenaudojimo / nulinio saugojimo (zero-day retention / opt-out) parinktį, tada palikite žemiau esantį sakinį. Taip pat patikrinkite dabartinius Anthropic duomenų saugojimo terminus. -->
+<p>Voyage AI paskyroje esame išjungę duomenų naudojimą modeliams tobulinti, todėl žinutės tekstas naudojamas tik vektoriui sugeneruoti.</p>
+<p>Duomenis galime atskleisti valstybės institucijoms tik tada, kai to reikalauja galiojantys teisės aktai.</p>
+
+<h2 id="perdavimas">7. Duomenų perdavimas už Europos ekonominės erdvės ribų</h2>
+<p>Anthropic, Voyage AI, o priklausomai nuo regiono ir Railway, tvarko duomenis Jungtinėse Amerikos Valstijose. Be to, visi minėti teikėjai yra JAV įmonės, todėl, net jei duomenys saugomi ES, jie teoriškai gali būti pasiekiami iš JAV (pvz., techninei priežiūrai). Tokį perdavimą grindžiame:</p>
+<ul>
+  <li><strong>Europos Komisijos patvirtintomis standartinėmis sutarčių sąlygomis</strong> (BDAR 46 str. 2 d. c p.), įtrauktomis į teikėjų duomenų tvarkymo sutartis; ir</li>
+  <li>kai teikėjas yra sertifikuotas pagal <strong>ES ir JAV duomenų privatumo sistemą</strong> (EU–US Data Privacy Framework), – Europos Komisijos sprendimu dėl tinkamumo (BDAR 45 str.).</li>
+</ul>
+<p>Papildomai duomenys perdavimo metu šifruojami (HTTPS/TLS), o dienoraščio tekstas – užšifruotas jūsų įrenginyje. Standartinių sutarčių sąlygų kopijos galite paprašyti el. paštu.</p>
+
+<h2 id="saugumas">8. Saugumas ir šifravimas</h2>
+<ul>
+  <li><strong>Dienoraščio šifravimas įrenginyje.</strong> Kiekvienam naudotojui sugeneruojamas atsitiktinis 256 bitų raktas. Įrašai juo užšifruojami AES-256-GCM algoritmu telefone. Serveryje saugoma tik rakto kopija, užšifruota raktu, išvestu iš jūsų slaptažodžio (PBKDF2). Todėl net nutekėjus duomenų bazei dienoraščio tekstas liktų neperskaitomas.</li>
+  <li><strong>Svarbu:</strong> kadangi raktas apsaugotas jūsų slaptažodžiu, <strong>pamiršę slaptažodį ar jį atstatę, ankstesnių dienoraščio įrašų atkurti negalėsime</strong> – to padaryti techniškai neįmanoma.</li>
+  <li><strong>Prieigos kontrolė.</strong> Duomenų bazėje taikoma eilučių lygio apsauga (angl. <em>Row Level Security</em>): kiekvienas naudotojas gali skaityti ir keisti tik savo įrašus.</li>
+  <li><strong>Šifruotas ryšys.</strong> Visas programėlės ryšys su serveriais vyksta HTTPS (TLS) protokolu.</li>
+  <li><strong>Ribotos žinios.</strong> Pokalbio žinutės, nuotaikos ir dienoraščio metaduomenys nėra šifruojami „nuo galo iki galo“. Techniškai prie jų galėtų prieiti sistemos administratorius ar paslaugų teikėjai, tačiau to nedarome, išskyrus atvejus, kai to būtina gedimui pašalinti ar teisės aktų reikalavimui įvykdyti.</li>
+</ul>
+<p>Joks saugumo sprendimas nėra absoliutus. Įvykus asmens duomenų saugumo pažeidimui, kuris gali kelti didelį pavojų jūsų teisėms, nedelsdami apie tai pranešime jums ir Valstybinei duomenų apsaugos inspekcijai, kaip reikalauja BDAR.</p>
+
+<h2 id="saugojimas">9. Kiek laiko saugome duomenis</h2>
+<div class="table-wrap">
+<table>
+  <thead><tr><th>Duomenys</th><th>Saugojimo terminas</th></tr></thead>
+  <tbody>
+    <tr><td>Paskyros duomenys, šifravimo rakto duomenys</td><td>Kol turite paskyrą. Ištrynus paskyrą – ištrinami nedelsiant.</td></tr>
+    <tr><td>Dienoraščio įrašai ir nuotaikos</td><td>Kol ištrinate paskyrą (arba patys ištrinate atskirus įrašus, kai programėlė tai leidžia).</td></tr>
+    <tr><td>Pokalbio žinutės</td><td>Mūsų duomenų bazėje nesaugomos. Mūsų serveris jas apdoroja tik atsakymo generavimo metu. Anthropic ir Voyage AI jas gali saugoti pagal savo sąlygas ribotą laiką (žr. 6 skyrių).</td></tr>
+    <tr><td>Techniniai žurnalai (IP adresas, užklausų laikas)</td><td>Pagal paslaugų teikėjų žurnalų saugojimo politiką, paprastai ne ilgiau kaip <span class="placeholder">[30]</span> dienų.</td></tr>
+    <tr><td>Atsarginės duomenų bazės kopijos</td><td>Ištrinti duomenys gali likti automatinėse atsarginėse kopijose iki <span class="placeholder">[7]</span> dienų, po to perrašomi. Dienoraščio tekstas jose taip pat yra užšifruotas.</td></tr>
+    <tr><td>Susirašinėjimas el. paštu</td><td>Iki užklausos išsprendimo ir ne ilgiau kaip 1 metus po to.</td></tr>
+  </tbody>
+</table>
+</div>
+<!-- TODO (savininkui): patikrinkite Supabase plano atsarginių kopijų ir Railway žurnalų saugojimo terminus ir pakeiskite [30] bei [7]. -->
+
+<h2 id="teises">10. Jūsų teisės</h2>
+<p>Pagal BDAR turite šias teises:</p>
+<ul>
+  <li><strong>Teisė susipažinti</strong> (15 str.) – gauti patvirtinimą, ar tvarkome jūsų duomenis, ir jų kopiją. Daugumą duomenų matote tiesiog programėlėje.</li>
+  <li><strong>Teisė ištaisyti</strong> (16 str.) – pataisyti netikslius duomenis. Tos dienos dienoraščio įrašą galite perrašyti programėlėje; dėl kitų duomenų rašykite mums.</li>
+  <li><strong>Teisė ištrinti</strong> („teisė būti pamirštam“, 17 str.) – programėlėje pasirinkite <strong>Nustatymai → Ištrinti paskyrą</strong>. Bus negrįžtamai ištrinta jūsų paskyra, dienoraščio įrašai, nuotaikos ir šifravimo rakto duomenys, o įrenginyje – šifravimo raktas ir sesija. Taip pat galite paprašyti ištrynimo el. paštu.</li>
+  <li><strong>Teisė į duomenų perkeliamumą</strong> (20 str.) – gauti savo pateiktus duomenis susistemintu, kompiuterio skaitomu formatu (pvz., JSON). Kol programėlėje nėra eksporto funkcijos, parašykite mums el. paštu.</li>
+  <!-- TODO (savininkui): jei programėlėje atsiras duomenų eksporto funkcija, paminėkite ją čia. Atkreipkite dėmesį: eksportuojant iš serverio dienoraščio tekstas bus šifruotas – iššifruotą eksportą gali sukurti tik pati programėlė. -->
+  <li><strong>Teisė apriboti tvarkymą</strong> (18 str.) – tam tikrais atvejais paprašyti laikinai netvarkyti duomenų.</li>
+  <li><strong>Teisė nesutikti</strong> (21 str.) – nesutikti su tvarkymu, grindžiamu teisėtu interesu (pvz., techniniais žurnalais).</li>
+  <li><strong>Teisė atšaukti sutikimą</strong> (7 str. 3 d.) – bet kada, taip pat lengvai, kaip jį davėte (ištrinant paskyrą arba parašius mums).</li>
+</ul>
+<p>Į prašymus atsakome nedelsiant, ne vėliau kaip per 1 mėnesį (sudėtingais atvejais terminas gali būti pratęstas dar 2 mėnesiams – apie tai informuosime). Teisių įgyvendinimas nemokamas. Kad apsaugotume jūsų duomenis, galime paprašyti prašymą pateikti iš paskyros el. pašto adreso.</p>
+
+<h2 id="skundas">11. Teisė pateikti skundą</h2>
+<p>Jei manote, kad jūsų duomenys tvarkomi pažeidžiant teisės aktus, pirmiausia kreipkitės į mus – pasistengsime situaciją išspręsti. Taip pat turite teisę pateikti skundą priežiūros institucijai:</p>
+<div class="card">
+  <strong>Valstybinė duomenų apsaugos inspekcija (VDAI)</strong><br>
+  L. Sapiegos g. 17, LT-10312 Vilnius<br>
+  El. paštas: <a href="mailto:ada@ada.lt">ada@ada.lt</a><br>
+  Svetainė: <a href="https://vdai.lrv.lt" rel="noopener">vdai.lrv.lt</a>
+</div>
+<p>Jei gyvenate kitoje ES valstybėje, galite kreiptis ir į savo šalies priežiūros instituciją.</p>
+
+<h2 id="amzius">12. Amžiaus riba</h2>
+<!-- TODO (savininkui): pasirinkta konservatyvi 18 m. riba. Pastaba: Lietuvoje (Asmens duomenų teisinės apsaugos įstatymo 6 str.) amžius, nuo kurio vaikas pats gali duoti sutikimą informacinės visuomenės paslaugoms, yra 14 m., ne 16 m. Jei norite leisti jaunesnius naudotojus, reikės papildomų apsaugos priemonių. Registracijoje rekomenduojama pridėti amžiaus patvirtinimą ir atitinkamai užpildyti Google Play „Target audience“ formą. -->
+<p>Giedra skirta <strong>18 metų ir vyresniems</strong> asmenims. Registruodamiesi patvirtinate, kad jums yra bent 18 metų. Sąmoningai nerenkame jaunesnių asmenų duomenų. Sužinoję, kad paskyrą susikūrė jaunesnis asmuo, ją ir susijusius duomenis ištrinsime.</p>
+<p>Jei esate jaunesni nei 18 metų ir jums sunku, nemokamai ir anonimiškai galite kreiptis į <strong>Jaunimo liniją</strong> (<a href="tel:880028888">8 800 28 888</a>) arba <strong>Vaikų liniją</strong> (<a href="tel:116111">116 111</a>).</p>
+
+<h2 id="reklama">13. Jokios reklamos ir duomenų pardavimo</h2>
+<p>Programėlėje nėra reklamos. Jūsų duomenų <strong>neparduodame, nenuomojame ir neperduodame</strong> reklamuotojams, duomenų brokeriams ar kitiems tretiesiems asmenims jų pačių tikslais. Jūsų dienoraščio ir pokalbių duomenų nenaudojame DI modeliams mokyti.</p>
+
+<h2 id="automatizuoti">14. Automatizuoti sprendimai</h2>
+<p>DI atsakymai generuojami automatiškai, o krizinių žodžių atpažinimas veikia automatiškai pagal raktinių žodžių sąrašą. Tačiau šie procesai nesukelia jums teisinių pasekmių ir nedaro panašaus reikšmingo poveikio BDAR 22 str. prasme: krizinių žodžių atpažinimas tik parodo pagalbos linijų numerius ir niekam apie jus nepraneša. Profiliavimo rinkodaros tikslais nevykdome.</p>
+
+<h2 id="pakeitimai">15. Politikos pakeitimai</h2>
+<p>Šią politiką galime atnaujinti, pvz., pasikeitus programėlės funkcijoms ar teisės aktams. Aktuali versija visada skelbiama šiame puslapyje, nurodant įsigaliojimo datą. Apie esminius pakeitimus (ypač jei pradėtume tvarkyti naujus duomenis ar naudoti naujus paslaugų teikėjus) informuosime programėlėje ar el. paštu iš anksto, o kai to reikalauja teisės aktai, – paprašysime naujo sutikimo.</p>
+
+<h2 id="kontaktai">16. Kontaktai</h2>
+<p>Klausimai, prašymai dėl jūsų teisių ar pastabos apie privatumą:</p>
+<div class="card">
+  <strong><span class="placeholder">[VARDAS PAVARDĖ]</span></strong><br>
+  El. paštas: <span class="placeholder">[EL. PAŠTAS]</span>
+</div>
+</main>
+
+<footer>
+  <p>© 2026 Giedra · <a href="privacy.html">Privatumo politika</a> · <a href="terms.html">Naudojimo sąlygos</a></p>
+  <p>Skubi pagalba: <a href="tel:112">112</a> · Vilties linija <a href="tel:116123">116 123</a> · Jaunimo linija <a href="tel:880028888">8 800 28 888</a></p>
+</footer>
+</div>
+</body>
+</html>
