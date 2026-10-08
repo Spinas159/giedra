@@ -75,7 +75,7 @@
 
 <main>
 <h1>Privatumo politika</h1>
-<p class="meta">Programėlė „Giedra“ (Android paketas <code>lt.giedra.app</code>) · Įsigalioja nuo 2026 m. spalio 1 d. · Versija 1.0</p>
+<p class="meta">Programėlė „Giedra“ (Android paketas <code>lt.giedra.app</code>) · Įsigalioja nuo 2026 m. spalio 8 d. · Versija 1.1</p>
 
 <p class="lead">Giedra – tai dirbtiniu intelektu (DI) paremta emocinės savijautos pagalbinė programėlė: pokalbis su DI, nuotaikų sekimas ir asmeninis dienoraštis. Kadangi tai, ką čia rašote, yra labai asmeniška, šioje politikoje paprastai ir tiksliai paaiškiname, kokius duomenis tvarkome, kur jie keliauja ir kaip galite juos valdyti.</p>
 
@@ -83,7 +83,8 @@
 <strong>Trumpai</strong>
 <ul>
   <li>Dienoraščio įrašų tekstas užšifruojamas <strong>jūsų telefone</strong> (AES-256-GCM) prieš išsiunčiant į serverį. Be jūsų slaptažodžio jo perskaityti negalime nei mes, nei mūsų paslaugų teikėjai.</li>
-  <li>Pokalbio žinutės <strong>nėra</strong> šifruojamos „nuo galo iki galo“: kad DI galėtų atsakyti, jos perduodamos (saugiu HTTPS ryšiu) mūsų serveriui ir DI paslaugų teikėjams Anthropic ir Voyage AI.</li>
+  <li>Pokalbių istorija saugoma mūsų duomenų bazėje (ES), bet žinučių tekstas užšifruojamas <strong>jūsų telefone</strong> tuo pačiu raktu kaip ir dienoraštis. Kiekvieną pokalbį galite ištrinti atskirai.</li>
+  <li>Tačiau pokalbio žinutės <strong>nėra</strong> šifruojamos „nuo galo iki galo“: kad DI galėtų atsakyti, jos (kartu su to paties pokalbio ankstesnėmis žinutėmis) perduodamos neužšifruotos, tik saugiu HTTPS ryšiu, mūsų serveriui ir DI paslaugų teikėjams Anthropic ir Voyage AI.</li>
   <li>Nuotaikų įvertinimai (1–5), dienoraščio įrašo data, nuotaika ir žymos saugomi neužšifruoti, bet apsaugoti prieigos taisyklėmis – juos matote tik jūs.</li>
   <li>Nerodome reklamos, neparduodame ir nenuomojame jūsų duomenų, nenaudojame analitikos ar sekimo įrankių.</li>
   <li>Paskyrą ir visus su ja susijusius duomenis galite bet kada ištrinti programėlės nustatymuose.</li>
@@ -147,9 +148,11 @@
 
 <h3>2.5. Pokalbiai su DI</h3>
 <ul>
-  <li>Jūsų žinutė, to paties pokalbio ankstesnės žinutės (pokalbio kontekstas), šalies kodas (pagal nutylėjimą „LT“, naudojamas parinkti tinkamas pagalbos linijas) ir pokalbio sesijos numeris.</li>
-  <li>Šiuo metu pokalbių istorijos <strong>nesaugome</strong> savo duomenų bazėje: ji laikoma tik programėlės atmintyje ir dingsta uždarius programėlę arba pradėjus naują pokalbį. Tačiau kiekviena žinutė perduodama mūsų serveriui ir DI paslaugų teikėjams, kaip aprašyta <a href="#di">5 skyriuje</a>.</li>
-  <!-- TODO (savininkui): jei bus įjungtas pokalbių saugojimas Supabase lentelėse chat_sessions / chat_messages arba nuotaikų konteksto (mood_context) siuntimas į pokalbį, atnaujinkite šį skyrių ir saugojimo terminus. -->
+  <li><strong>Atsakymui sugeneruoti siunčiama:</strong> jūsų žinutė, to paties pokalbio ankstesnės žinutės (pokalbio kontekstas), paskutinių dienų nuotaikų įvertinimai (1–5, jei juos žymite), šalies kodas (pagal nutylėjimą „LT“, naudojamas parinkti tinkamas pagalbos linijas) ir kelintas tai jūsų pokalbis. Visa tai perduodama saugiu HTTPS ryšiu, bet <strong>neužšifruota</strong> mūsų serveriui ir DI paslaugų teikėjams – kitaip DI negalėtų atsakyti (žr. <a href="#di">5 skyrių</a>).</li>
+  <li><strong>Pokalbių istorija</strong> saugoma mūsų duomenų bazėje (Supabase, ES regionas), kad galėtumėte grįžti prie ankstesnių pokalbių ir juos matytumėte kitame telefone. Kiekvienas pokalbis saugomas atskirai.</li>
+  <li><strong>Žinučių tekstas</strong> (ir jūsų, ir DI atsakymų) užšifruojamas <strong>jūsų telefone</strong> AES-256-GCM algoritmu tuo pačiu raktu kaip dienoraštis, prieš išsaugant duomenų bazėje. Pokalbio pavadinimas sąraše nesaugomas – telefonas jį sudaro iš pirmosios jūsų žinutės.</li>
+  <li><strong>Neužšifruoti metaduomenys:</strong> pokalbio sukūrimo ir paskutinės žinutės laikas, pokalbio eilės numeris, kiekvienos žinutės autorius (jūs ar DI) ir laikas.</li>
+  <li>Bet kurį pokalbį galite ištrinti programėlėje (<strong>Pokalbis → pokalbių sąrašas → šiukšliadėžės ženklas</strong>); visi pokalbiai ištrinami ir kartu su paskyra.</li>
 </ul>
 
 <h3>2.6. Duomenys, saugomi tik jūsų įrenginyje</h3>
@@ -206,14 +209,14 @@
     <tr>
       <td><strong>Supabase, Inc.</strong> (JAV)</td>
       <td>Duomenų bazė ir autentifikavimas</td>
-      <td>Paskyros duomenys, užšifruotas raktas, šifruoti dienoraščio įrašai su metaduomenimis, nuotaikos</td>
+      <td>Paskyros duomenys, užšifruotas raktas, šifruoti dienoraščio įrašai ir pokalbių žinutės su metaduomenimis, nuotaikos</td>
       <!-- TODO (savininkui): patvirtinkite Supabase projekto regioną (Dashboard → Project Settings → General → Region). PROD_CHECKLIST.md nurodo ES regioną, bet iš kodo to nustatyti negalima. Jei ne ES – pakeiskite. -->
       <td>Europos Sąjunga (duomenų centras ES regione)</td>
     </tr>
     <tr>
       <td><strong>Railway Corp.</strong> (JAV)</td>
       <td>Mūsų serverio (API) talpinimas</td>
-      <td>Pokalbio žinutės perdavimo metu (neišsaugomos), techniniai žurnalai</td>
+      <td>Pokalbio žinutės perdavimo metu (serveris jų neišsaugo; istoriją telefonas užšifruotą išsaugo Supabase), techniniai žurnalai</td>
       <!-- TODO (savininkui): patikrinkite Railway paslaugos regioną (Service → Settings → Region). Jei pasirinktas „EU West (Amsterdam)“, įrašykite „ES (Nyderlandai)“; kitu atveju – JAV. -->
       <td>JAV arba ES, priklausomai nuo pasirinkto regiono <span class="placeholder">[PATIKSLINTI]</span></td>
     </tr>
@@ -243,15 +246,15 @@
   <li><strong>Europos Komisijos patvirtintomis standartinėmis sutarčių sąlygomis</strong> (BDAR 46 str. 2 d. c p.), įtrauktomis į teikėjų duomenų tvarkymo sutartis; ir</li>
   <li>kai teikėjas yra sertifikuotas pagal <strong>ES ir JAV duomenų privatumo sistemą</strong> (EU–US Data Privacy Framework), – Europos Komisijos sprendimu dėl tinkamumo (BDAR 45 str.).</li>
 </ul>
-<p>Papildomai duomenys perdavimo metu šifruojami (HTTPS/TLS), o dienoraščio tekstas – užšifruotas jūsų įrenginyje. Standartinių sutarčių sąlygų kopijos galite paprašyti el. paštu.</p>
+<p>Papildomai duomenys perdavimo metu šifruojami (HTTPS/TLS), o dienoraščio tekstas ir saugoma pokalbių istorija – užšifruoti jūsų įrenginyje. Standartinių sutarčių sąlygų kopijos galite paprašyti el. paštu.</p>
 
 <h2 id="saugumas">8. Saugumas ir šifravimas</h2>
 <ul>
-  <li><strong>Dienoraščio šifravimas įrenginyje.</strong> Kiekvienam naudotojui sugeneruojamas atsitiktinis 256 bitų raktas. Įrašai juo užšifruojami AES-256-GCM algoritmu telefone. Serveryje saugoma tik rakto kopija, užšifruota raktu, išvestu iš jūsų slaptažodžio (PBKDF2). Todėl net nutekėjus duomenų bazei dienoraščio tekstas liktų neperskaitomas.</li>
-  <li><strong>Svarbu:</strong> kadangi raktas apsaugotas jūsų slaptažodžiu, <strong>pamiršę slaptažodį ar jį atstatę, ankstesnių dienoraščio įrašų atkurti negalėsime</strong> – to padaryti techniškai neįmanoma.</li>
+  <li><strong>Dienoraščio ir pokalbių istorijos šifravimas įrenginyje.</strong> Kiekvienam naudotojui sugeneruojamas atsitiktinis 256 bitų raktas. Dienoraščio įrašai ir išsaugomos pokalbių žinutės juo užšifruojami AES-256-GCM algoritmu telefone. Serveryje saugoma tik rakto kopija, užšifruota raktu, išvestu iš jūsų slaptažodžio (PBKDF2). Todėl net nutekėjus duomenų bazei dienoraščio ir pokalbių istorijos tekstas liktų neperskaitomas.</li>
+  <li><strong>Svarbu:</strong> kadangi raktas apsaugotas jūsų slaptažodžiu, <strong>pamiršę slaptažodį ar jį atstatę, ankstesnių dienoraščio įrašų ir pokalbių istorijos atkurti negalėsime</strong> – to padaryti techniškai neįmanoma.</li>
   <li><strong>Prieigos kontrolė.</strong> Duomenų bazėje taikoma eilučių lygio apsauga (angl. <em>Row Level Security</em>): kiekvienas naudotojas gali skaityti ir keisti tik savo įrašus.</li>
   <li><strong>Šifruotas ryšys.</strong> Visas programėlės ryšys su serveriais vyksta HTTPS (TLS) protokolu.</li>
-  <li><strong>Ribotos žinios.</strong> Pokalbio žinutės, nuotaikos ir dienoraščio metaduomenys nėra šifruojami „nuo galo iki galo“. Techniškai prie jų galėtų prieiti sistemos administratorius ar paslaugų teikėjai, tačiau to nedarome, išskyrus atvejus, kai to būtina gedimui pašalinti ar teisės aktų reikalavimui įvykdyti.</li>
+  <li><strong>Ribotos žinios.</strong> Pokalbio žinutės siuntimo DI metu, nuotaikos ir dienoraščio bei pokalbių metaduomenys nėra šifruojami „nuo galo iki galo“. Techniškai prie jų galėtų prieiti sistemos administratorius ar paslaugų teikėjai, tačiau to nedarome, išskyrus atvejus, kai to būtina gedimui pašalinti ar teisės aktų reikalavimui įvykdyti.</li>
 </ul>
 <p>Joks saugumo sprendimas nėra absoliutus. Įvykus asmens duomenų saugumo pažeidimui, kuris gali kelti didelį pavojų jūsų teisėms, nedelsdami apie tai pranešime jums ir Valstybinei duomenų apsaugos inspekcijai, kaip reikalauja BDAR.</p>
 
@@ -262,9 +265,10 @@
   <tbody>
     <tr><td>Paskyros duomenys, šifravimo rakto duomenys</td><td>Kol turite paskyrą. Ištrynus paskyrą – ištrinami nedelsiant.</td></tr>
     <tr><td>Dienoraščio įrašai ir nuotaikos</td><td>Kol ištrinate paskyrą (arba patys ištrinate atskirus įrašus, kai programėlė tai leidžia).</td></tr>
-    <tr><td>Pokalbio žinutės</td><td>Mūsų duomenų bazėje nesaugomos. Mūsų serveris jas apdoroja tik atsakymo generavimo metu. Anthropic ir Voyage AI jas gali saugoti pagal savo sąlygas ribotą laiką (žr. 6 skyrių).</td></tr>
+    <tr><td>Pokalbių istorija (užšifruota)</td><td>Kol patys ištrinate pokalbį arba ištrinate paskyrą.</td></tr>
+    <tr><td>Pokalbio žinutės, perduotos atsakymui sugeneruoti</td><td>Mūsų serveris jas apdoroja tik atsakymo generavimo metu ir neišsaugo. Anthropic ir Voyage AI jas gali saugoti pagal savo sąlygas ribotą laiką (žr. 6 skyrių).</td></tr>
     <tr><td>Techniniai žurnalai (IP adresas, užklausų laikas)</td><td>Pagal paslaugų teikėjų žurnalų saugojimo politiką, paprastai ne ilgiau kaip <span class="placeholder">[30]</span> dienų.</td></tr>
-    <tr><td>Atsarginės duomenų bazės kopijos</td><td>Ištrinti duomenys gali likti automatinėse atsarginėse kopijose iki <span class="placeholder">[7]</span> dienų, po to perrašomi. Dienoraščio tekstas jose taip pat yra užšifruotas.</td></tr>
+    <tr><td>Atsarginės duomenų bazės kopijos</td><td>Ištrinti duomenys gali likti automatinėse atsarginėse kopijose iki <span class="placeholder">[7]</span> dienų, po to perrašomi. Dienoraščio ir pokalbių tekstas jose taip pat yra užšifruotas.</td></tr>
     <tr><td>Susirašinėjimas el. paštu</td><td>Iki užklausos išsprendimo ir ne ilgiau kaip 1 metus po to.</td></tr>
   </tbody>
 </table>
@@ -276,7 +280,7 @@
 <ul>
   <li><strong>Teisė susipažinti</strong> (15 str.) – gauti patvirtinimą, ar tvarkome jūsų duomenis, ir jų kopiją. Daugumą duomenų matote tiesiog programėlėje.</li>
   <li><strong>Teisė ištaisyti</strong> (16 str.) – pataisyti netikslius duomenis. Tos dienos dienoraščio įrašą galite perrašyti programėlėje; dėl kitų duomenų rašykite mums.</li>
-  <li><strong>Teisė ištrinti</strong> („teisė būti pamirštam“, 17 str.) – programėlėje pasirinkite <strong>Nustatymai → Ištrinti paskyrą</strong>. Bus negrįžtamai ištrinta jūsų paskyra, dienoraščio įrašai, nuotaikos ir šifravimo rakto duomenys, o įrenginyje – šifravimo raktas ir sesija. Taip pat galite paprašyti ištrynimo el. paštu.</li>
+  <li><strong>Teisė ištrinti</strong> („teisė būti pamirštam“, 17 str.) – programėlėje pasirinkite <strong>Nustatymai → Ištrinti paskyrą</strong>. Bus negrįžtamai ištrinta jūsų paskyra, dienoraščio įrašai, pokalbių istorija, nuotaikos ir šifravimo rakto duomenys, o įrenginyje – šifravimo raktas ir sesija. Taip pat galite paprašyti ištrynimo el. paštu.</li>
   <li><strong>Teisė į duomenų perkeliamumą</strong> (20 str.) – gauti savo pateiktus duomenis susistemintu, kompiuterio skaitomu formatu (pvz., JSON). Kol programėlėje nėra eksporto funkcijos, parašykite mums el. paštu.</li>
   <!-- TODO (savininkui): jei programėlėje atsiras duomenų eksporto funkcija, paminėkite ją čia. Atkreipkite dėmesį: eksportuojant iš serverio dienoraščio tekstas bus šifruotas – iššifruotą eksportą gali sukurti tik pati programėlė. -->
   <li><strong>Teisė apriboti tvarkymą</strong> (18 str.) – tam tikrais atvejais paprašyti laikinai netvarkyti duomenų.</li>
